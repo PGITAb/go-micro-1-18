@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mholt/certmagic"
+	"github.com/caddyserver/certmagic"
 	"github.com/micro/go-micro/store"
 	"github.com/micro/go-micro/sync/lock"
 )

@@ -1,4 +1,4 @@
-// Package certmagic is the ACME provider from github.com/mholt/certmagic
+// Package certmagic is the ACME provider from github.com/caddyserver/certmagic
 package certmagic
 
 import (
@@ -7,7 +7,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/mholt/certmagic"
+	"github.com/caddyserver/certmagic"
 
 	"github.com/micro/go-micro/api/server/acme"
 )

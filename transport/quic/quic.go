@@ -7,13 +7,13 @@ import (
 	"encoding/gob"
 	"time"
 
-	quic "github.com/lucas-clemente/quic-go"
 	"github.com/micro/go-micro/transport"
 	utls "github.com/micro/go-micro/util/tls"
+	quic "github.com/quic-go/quic-go"
 )
 
 type quicSocket struct {
-	s   quic.Session
+	s   quic.Connection
 	st  quic.Stream
 	enc *gob.Encoder
 	dec *gob.Decoder
@@ -117,9 +117,8 @@ func (q *quicTransport) Dial(addr string, opts ...transport.DialOption) (transpo
 			NextProtos:         []string{"http/1.1"},
 		}
 	}
-	s, err := quic.DialAddr(addr, config, &quic.Config{
+	s, err := quic.DialAddr(context.Background(), addr, config, &quic.Config{
 		MaxIdleTimeout: time.Minute * 2,
-		KeepAlive:      true,
 	})
 	if err != nil {
 		return nil, err
@@ -163,13 +162,13 @@ func (q *quicTransport) Listen(addr string, opts ...transport.ListenOption) (tra
 		}
 	}
 
-	l, err := quic.ListenAddr(addr, config, &quic.Config{KeepAlive: true})
+	l, err := quic.ListenAddr(addr, config, &quic.Config{})
 	if err != nil {
 		return nil, err
 	}
 
 	return &quicListener{
-		l:    l,
+		l:    *l,
 		t:    q,
 		opts: options,
 	}, nil

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/imdario/mergo"
+	"dario.cat/mergo"
 	"github.com/micro/cli"
 	"github.com/micro/go-micro/config/cmd"
 	"github.com/micro/go-micro/config/source"
@@ -87,14 +87,15 @@ func (c *cliSource) String() string {
 // command line flags have already been parsed.
 //
 // Example:
-//      cli.StringFlag{Name: "db-host"},
+//
+//	cli.StringFlag{Name: "db-host"},
 //
 //
-//      {
-//          "database": {
-//              "host": "localhost"
-//          }
-//      }
+//	{
+//	    "database": {
+//	        "host": "localhost"
+//	    }
+//	}
 func NewSource(opts ...source.Option) source.Source {
 	options := source.NewOptions(opts...)
 

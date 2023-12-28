@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/caddyserver/certmagic"
 	"github.com/go-acme/lego/v3/providers/dns/cloudflare"
-	"github.com/mholt/certmagic"
 	"github.com/micro/go-micro/api/server/acme"
 	cfstore "github.com/micro/go-micro/store/cloudflare"
 	"github.com/micro/go-micro/sync/lock/memory"
