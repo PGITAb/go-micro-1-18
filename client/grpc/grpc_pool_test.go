@@ -6,8 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"google.golang.org/grpc"
-	pgrpc "google.golang.org/grpc"
+	grpc "google.golang.org/grpc"
 	pb "google.golang.org/grpc/examples/helloworld/helloworld"
 )
 
@@ -19,7 +18,7 @@ func testPool(t *testing.T, size int, ttl time.Duration) {
 	}
 	defer l.Close()
 
-	s := pgrpc.NewServer()
+	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &greeterServer{})
 
 	go s.Serve(l)

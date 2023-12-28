@@ -5,9 +5,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/coreos/etcd/mvcc/mvccpb"
 	"github.com/micro/go-micro/config/options"
 	"github.com/micro/go-micro/store"
+	"go.etcd.io/etcd/api/v3/mvccpb"
 	client "go.etcd.io/etcd/client/v3"
 )
 
